@@ -58,7 +58,10 @@
                                 <div class="col-md-3">
                                     <label class="form-label small text-muted">{{ __('Qty') }}</label>
                                     <input name="bom[qty][]" type="number" step="0.001" min="0.001"
-                                        value="{{ is_array($qtys)?($qtys[$i]??''):$qtys }}" 
+                                        @php
+                                            $val = is_array($qtys) ? ($qtys[$i] ?? '') : $qtys;
+                                        @endphp
+                                        value="{{ is_numeric($val) ? (float) $val : $val }}" 
                                         class="form-control"
                                         placeholder="{{ __('Qty') }}" required>
                                 </div>

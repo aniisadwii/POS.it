@@ -54,7 +54,7 @@
                             <div class="col-md-6">
                                 <label class="form-label fw-medium">{{ __('Low Stock Threshold') }}</label>
                                 <input type="number" name="low_stock_threshold"
-                                    value="{{ old('low_stock_threshold', $item->low_stock_threshold) }}"
+                                    value="{{ (float) old('low_stock_threshold', $item->low_stock_threshold) }}"
                                     class="form-control" step="0.001" min="0">
                                 <div class="form-text text-muted small">{{ __('Alert when stock falls below this.') }}
                                 </div>
