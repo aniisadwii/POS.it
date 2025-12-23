@@ -38,9 +38,6 @@ class CheckoutController extends Controller
             $sale = Sale::create([
                 'invoice_no' => 'INV-'.now()->format('Ymd').'-'.strtoupper(Str::random(5)),
                 'user_id'    => $r->user()->id,
-                'subtotal'   => $totals['subtotal'],
-                'discount'   => $totals['discount'],
-                'tax'        => $totals['tax'],
                 'total'      => $totals['total'],
                 'paid'       => $paid,
                 'change'     => $change,
@@ -53,8 +50,7 @@ class CheckoutController extends Controller
                     'product_id' => $l['product_id'],
                     'qty'        => $l['qty'],
                     'price'      => $l['price'],
-                    'discount'   => $l['discount'] ?? 0,
-                    'total'      => ($l['price'] * $l['qty']) - ($l['discount'] ?? 0),
+                    'total'      => $totals['total'],
                 ]);
 
                 $product = Product::with(['linkedItem', 'bomLines.item'])->findOrFail($l['product_id']);

@@ -62,22 +62,6 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <span>Subtotal</span>
-                        <strong>Rp {{ number_format($sale->subtotal,0,',','.') }}</strong>
-                    </div>
-
-                    <div class="d-flex justify-content-between text-secondary">
-                        <span>Discount</span>
-                        <span>Rp {{ number_format($sale->discount,0,',','.') }}</span>
-                    </div>
-
-                    <div class="d-flex justify-content-between text-secondary mb-1">
-                        <span>Tax</span>
-                        <span>Rp {{ number_format($sale->tax,0,',','.') }}</span>
-                    </div>
-
-                    <hr>
                     <div class="d-flex justify-content-between fs-5 mb-2">
                         <span>Total</span>
                         <strong>Rp {{ number_format($sale->total,0,',','.') }}</strong>

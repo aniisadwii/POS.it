@@ -61,10 +61,7 @@ class SaleController extends Controller
         $cart = $this->cart($r);
         abort_if(empty($cart['lines']), 422, 'Cart empty');
 
-        $subtotal = collect($cart['lines'])->sum(fn($l)=>$l['price']*$l['qty']);
-        $discount = 0;
-        $tax      = 0;
-        $total    = $subtotal - $discount + $tax;
+        $total = collect($cart['lines'])->sum(fn($l) => $l['price'] * $l['qty']);
 
         $data = $r->validate([
             'paid'          => 'required|numeric|min:0',
@@ -77,9 +74,6 @@ class SaleController extends Controller
             $sale = Sale::create([
                 'invoice_no' => 'INV-'.strtoupper(Str::random(8)),
                 'user_id'    => $r->user()->id,
-                'subtotal'   => $subtotal,
-                'discount'   => $discount,
-                'tax'        => $tax,
                 'total'      => $total,
                 'paid'       => $paid,
                 'change'     => $change,
@@ -93,7 +87,6 @@ class SaleController extends Controller
                     'product_id'=> $l['product_id'],
                     'qty'       => $l['qty'],
                     'price'     => $l['price'],
-                    'discount'  => 0,
                     'total'     => $lineTotal,
                 ]);
 

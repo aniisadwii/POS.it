@@ -49,11 +49,10 @@ class Cart
 
     public static function totals(array $cart): array
     {
-        $subtotal = 0.0;
+        $total = 0.0;
         foreach ($cart['lines'] as $line) {
-            $subtotal += ((float)$line['price']) * ((float)$line['qty']);
+            $total += ((float)$line['price']) * ((float)$line['qty']);
         }
-        $discount = 0.0; $tax = 0.0; $total = $subtotal - $discount + $tax;
-        return compact('subtotal','discount','tax','total');
+        return ['total' => $total];
     }
 }

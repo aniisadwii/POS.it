@@ -41,14 +41,6 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between"><span>{{ __('Subtotal') }}</span><strong>Rp
-                            {{ number_format($totals['subtotal'],0,',','.') }}</strong></div>
-                    <div class="d-flex justify-content-between text-secondary"><span>{{ __('Discount') }}</span><span>Rp
-                            {{ number_format($totals['discount'],0,',','.') }}</span></div>
-                    <div class="d-flex justify-content-between text-secondary"><span>{{ __('Tax') }}</span><span>Rp
-                            {{ number_format($totals['tax'],0,',','.') }}</span></div>
-                    <hr>
-
                     <div class="d-flex justify-content-between fs-5"><span>{{ __('Total') }}</span><strong>Rp
                             {{ number_format($totals['total'],0,',','.') }}</strong></div>
 
@@ -64,8 +56,8 @@
                         </div>
 
                         <div class="mb-2">
-                            <label class="form-label">{{ __('Paid Amount') }}</label>
-                            <input type="number" step="0.01" min="0" name="paid" class="form-control" required>
+                            <label class="form-label">{{ __('Amount Received') }}</label>
+                            <input type="number" placeholder="{{ __('Enter amount received') }}" step="0.01" min="0" name="paid" class="form-control" required>
                         </div>
                         <button class="btn btn-success w-100">{{ __('Confirm & Pay') }}</button>
                     </form>

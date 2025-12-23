@@ -9,9 +9,6 @@ return new class extends Migration {
         Schema::create('sales', function (Blueprint $t) {
             $t->id();
             $t->string('invoice_no')->unique();
-            $t->decimal('subtotal', 12, 2)->default(0);
-            $t->decimal('discount', 12, 2)->default(0);
-            $t->decimal('tax', 12, 2)->default(0);
             $t->decimal('total', 12, 2)->default(0);
             $t->decimal('paid', 12, 2)->default(0);
             $t->decimal('change', 12, 2)->default(0);

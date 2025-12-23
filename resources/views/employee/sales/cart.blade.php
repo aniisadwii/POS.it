@@ -30,7 +30,7 @@
                     @endphp
 
                     @forelse($lines as $l)
-                    @php $line = ($l['price'] * $l['qty']) - ($l['discount'] ?? 0); @endphp
+                    @php $line = ($l['price'] * $l['qty']); @endphp
                     <tr>
                         <td>{{ $l['name'] }}</td>
 
